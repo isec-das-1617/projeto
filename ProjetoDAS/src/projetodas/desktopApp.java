@@ -5,6 +5,8 @@
  */
 package projetodas;
 
+import javax.swing.JFileChooser;
+
 /**
  *
  * @author diogo
@@ -35,6 +37,11 @@ public class desktopApp extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(400, 300));
 
         jMenu1.setText("File");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Edit");
@@ -55,6 +62,12 @@ public class desktopApp extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+        JFileChooser fc;
+        fc = new JFileChooser();
+        fc.showOpenDialog(jMenu1);
+    }//GEN-LAST:event_jMenu1MouseClicked
 
     /**
      * @param args the command line arguments

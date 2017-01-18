@@ -42,9 +42,11 @@ public class ProjetoDAS extends JApplet {
                 } catch (Exception e) {
                 }
                 JFrame janela = new desktopApp();
-               JApplet applet = new ProjetoDAS();
+                JApplet applet = new ProjetoDAS();
                 applet.init();
                 janela.setVisible(true);
+                
+                
 //                JFrame frame = new JFrame("JavaFX 2 in Swing");
 //                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //                
