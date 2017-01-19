@@ -41,25 +41,9 @@ public class ProjetoDAS extends JApplet {
                     UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
                 } catch (Exception e) {
                 }
-                JFrame janela = new desktopApp();
-                JApplet applet = new ProjetoDAS();
-                applet.init();
+                JFrame janela = new notepad();
                 janela.setVisible(true);
-                
-                
-//                JFrame frame = new JFrame("JavaFX 2 in Swing");
-//                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//                
-//                JApplet applet = new ProjetoDAS();
-//                applet.init();
-//                
-//                frame.setContentPane(applet.getContentPane());
-//                
-//                frame.pack();
-//                frame.setLocationRelativeTo(null);
-//                frame.setVisible(true);
-                
-                applet.start();
+
             }
         });
     }
