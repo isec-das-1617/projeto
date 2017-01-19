@@ -5,7 +5,12 @@
  */
 package projetodas;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import org.apache.commons.io.FileUtils;
 
 /**
  *
@@ -66,7 +71,22 @@ public class desktopApp extends javax.swing.JFrame {
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
         JFileChooser fc;
         fc = new JFileChooser();
-        fc.showOpenDialog(jMenu1);
+        int returnVal = fc.showOpenDialog(this);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+                File file = fc.getSelectedFile();
+            try {
+                //This is where a real application would open the file.
+                String str = FileUtils.readFileToString(file, "utf-8");
+                        System.out.println(str);
+            } catch (IOException ex) {
+                Logger.getLogger(desktopApp.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                System.out.println("Opening: " + file.getName() + ".");
+            } else {
+                System.out.println("Open command cancelled by user." );
+            }
+
+
     }//GEN-LAST:event_jMenu1MouseClicked
 
     /**
