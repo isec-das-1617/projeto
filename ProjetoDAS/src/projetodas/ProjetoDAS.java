@@ -40,6 +40,7 @@ public class ProjetoDAS extends JApplet {
                     UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
                 } catch (Exception e) {
                 }
+<<<<<<< 8c2d88637258df01300794922c3a8013956caacd
                 JFrame entrance = new RegLogin(ucontrol);
                  janela = new notepad();
                 entrance.setVisible(true);
@@ -47,6 +48,13 @@ public class ProjetoDAS extends JApplet {
                
                 //janela.setVisible(true);
 
+=======
+                JFrame janela = null;
+//                janela = new notepad();
+//                janela.setVisible(true);
+                janela = new NewJFrameEugenio();
+                janela.setVisible(true);
+>>>>>>> ace7e7a5590e9103a3154ba1bc0287b844b6f6be
             }
         });
     }
