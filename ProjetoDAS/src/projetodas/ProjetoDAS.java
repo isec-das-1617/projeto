@@ -43,7 +43,7 @@ public class ProjetoDAS extends JApplet {
                 JFrame janela = null;
 //                janela = new notepad();
 //                janela.setVisible(true);
-                janela = new NewJFrameEugenio();
+                janela = new JFrameEditorText();
                 janela.setVisible(true);
             }
         });

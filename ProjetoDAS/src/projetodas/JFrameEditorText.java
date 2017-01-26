@@ -22,12 +22,12 @@ import javax.swing.filechooser.FileFilter;
  *
  * @author user
  */
-public class NewJFrameEugenio extends javax.swing.JFrame {
+public class JFrameEditorText extends javax.swing.JFrame {
 
     /**
      * Creates new form NewJFrameEugenio
      */
-    public NewJFrameEugenio() {
+    public JFrameEditorText() {
         initComponents();
         setTitle("Ref Manager 0.01");
         //setSize(new Dimension(500, 500));
@@ -298,20 +298,21 @@ public class NewJFrameEugenio extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NewJFrameEugenio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameEditorText.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NewJFrameEugenio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameEditorText.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NewJFrameEugenio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameEditorText.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NewJFrameEugenio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameEditorText.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NewJFrameEugenio().setVisible(true);
+                new JFrameEditorText().setVisible(true);
             }
         });
     }
