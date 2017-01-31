@@ -3,16 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package projetodas;
+package view;
 
 import controller.UserController;
+import javax.swing.JFrame;
 import model.User;
+import projetodas.ProjetoDAS;
 
 /**
  *
  * @author diogo
  */
-public class RegLogin extends javax.swing.JFrame {
+public class JFrameRegLogin extends javax.swing.JFrame {
 
     public void setUcontrol(UserController ucontrol) {
         this.ucontrol = ucontrol;
@@ -23,7 +25,7 @@ public class RegLogin extends javax.swing.JFrame {
      * Creates new form Registo
      * @param uc
      */
-    public RegLogin(UserController uc) {
+    public JFrameRegLogin(UserController uc) {
         this.ucontrol=uc;
        
         initComponents();
@@ -86,20 +88,19 @@ public class RegLogin extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         User u = new User(jTextField1.getText());
+        
         if (ucontrol.addUser(u)){
              jLabel1.setText("New");
-           
         } else {
             jLabel1.setText("Exist");
-            
         }
+        this.ucontrol.setCurrentUser(u);
         jLabel1.setVisible(true); 
         this.setVisible(false);
-        ProjetoDAS.janela.setVisible(true);
+        JFrame janela = new JFrameEditorText(this.ucontrol);
+        janela.setVisible(true);
+  
     }//GEN-LAST:event_jToggleButton1ActionPerformed
-
-    
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

@@ -17,6 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import model.User;
+import view.JFrameRegLogin;
 
 public class ProjetoDAS extends JApplet {
     
@@ -39,12 +40,14 @@ public class ProjetoDAS extends JApplet {
                 try {
                     UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
                 } catch (Exception e) {
+                
                 }
+                UserController uc = new UserController();
                 JFrame janela = null;
-//                janela = new notepad();
-//                janela.setVisible(true);
-                janela = new JFrameEditorText();
+                janela = new JFrameRegLogin(uc);
                 janela.setVisible(true);
+//                janela = new JFrameEditorText();
+//                janela.setVisible(true);
             }
         });
     }
