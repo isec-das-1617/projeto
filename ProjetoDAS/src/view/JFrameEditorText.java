@@ -18,6 +18,8 @@ import javax.swing.JFileChooser;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
+import export.ExportBuilder;
+import export.ExportBuilderImpl;
 
 /**
  *
@@ -53,6 +55,8 @@ public class JFrameEditorText extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenuFicheiroGuardar = new javax.swing.JMenuItem();
         jMenuFicheiroGuardarComo = new javax.swing.JMenuItem();
+        exportHtml = new javax.swing.JMenuItem();
+        exportTxt = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuFicheiroSair = new javax.swing.JMenuItem();
         jMenuEditar = new javax.swing.JMenu();
@@ -107,6 +111,22 @@ public class JFrameEditorText extends javax.swing.JFrame {
             }
         });
         jMenuFicheiro.add(jMenuFicheiroGuardarComo);
+
+        exportHtml.setText("Export to HTML");
+        exportHtml.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exportHtmlActionPerformed(evt);
+            }
+        });
+        jMenuFicheiro.add(exportHtml);
+
+        exportTxt.setText("Export to txt");
+        exportTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exportTxtActionPerformed(evt);
+            }
+        });
+        jMenuFicheiro.add(exportTxt);
         jMenuFicheiro.add(jSeparator1);
 
         jMenuFicheiroSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
@@ -312,11 +332,23 @@ public class JFrameEditorText extends javax.swing.JFrame {
         
     }//GEN-LAST:event_RedoActionPerformed
 
+    private void exportHtmlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportHtmlActionPerformed
+        ExportBuilder builder = new ExportBuilderImpl("html");
+        builder.exportText(jTextAreaArtigo.getText());
+    }//GEN-LAST:event_exportHtmlActionPerformed
+
+    private void exportTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportTxtActionPerformed
+        ExportBuilder builder = new ExportBuilderImpl("txt");
+        builder.exportText(jTextAreaArtigo.getText());
+    }//GEN-LAST:event_exportTxtActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar MenuNotePade;
     private javax.swing.JMenuItem Redo;
     private javax.swing.JMenuItem Undo;
+    private javax.swing.JMenuItem exportHtml;
+    private javax.swing.JMenuItem exportTxt;
     private javax.swing.JMenuItem jMenuColar;
     private javax.swing.JMenu jMenuEditar;
     private javax.swing.JMenuItem jMenuEditarColar;
