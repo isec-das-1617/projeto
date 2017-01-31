@@ -7,9 +7,9 @@ import java.io.PrintWriter;
 public class ExportTxt extends Export{
 
     @Override
-    public void exportText(String text) {
+    public void exportText(String text, String path) {
         try{
-            PrintWriter writer = new PrintWriter("name.txt", "UTF-8");
+            PrintWriter writer = new PrintWriter(path, "UTF-8");
             writer.println(text);
             writer.close();
         } catch (IOException e) {

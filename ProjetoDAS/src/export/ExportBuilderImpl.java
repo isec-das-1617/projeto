@@ -14,8 +14,8 @@ public class ExportBuilderImpl implements ExportBuilder{
     }
     
     @Override
-    public ExportBuilder exportText(final String text) {
-        export.exportText(text);
+    public ExportBuilder exportText(final String text, final String path) {
+        export.exportText(text,path);
         return this;
     }
 

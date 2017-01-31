@@ -6,11 +6,11 @@ import java.io.FileWriter;
 public class ExportHtml extends Export{
 
     @Override
-    public void exportText(String text) {
+    public void exportText(String text, String path) {
         FileWriter fWriter = null;
         BufferedWriter writer = null;
         try {
-            fWriter = new FileWriter("name.html");
+            fWriter = new FileWriter(path);
             writer = new BufferedWriter(fWriter);
             writer.write(text);
             writer.newLine();

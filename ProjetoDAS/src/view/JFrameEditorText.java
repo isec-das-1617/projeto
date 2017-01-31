@@ -20,6 +20,7 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 import export.ExportBuilder;
 import export.ExportBuilderImpl;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -333,13 +334,42 @@ public class JFrameEditorText extends javax.swing.JFrame {
     }//GEN-LAST:event_RedoActionPerformed
 
     private void exportHtmlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportHtmlActionPerformed
+        String path = null;
+        JFileChooser fc = new JFileChooser();
+        fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        FileNameExtensionFilter htmlfilter = new FileNameExtensionFilter(
+     "html files (*.html)", "html");
+        fc.setAcceptAllFileFilterUsed(false);
+        fc.setFileFilter(htmlfilter);
+        int returnVal = fc.showSaveDialog(this);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            File file = fc.getSelectedFile();
+            path = file.getAbsolutePath();
+            if(!path.contains(".html"))
+                path = path + ".html";
+                 
+        }
         ExportBuilder builder = new ExportBuilderImpl("html");
-        builder.exportText(jTextAreaArtigo.getText());
+        builder.exportText(jTextAreaArtigo.getText(),path);
     }//GEN-LAST:event_exportHtmlActionPerformed
 
     private void exportTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportTxtActionPerformed
+        String path = null;
+        JFileChooser fc = new JFileChooser();
+        fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        FileNameExtensionFilter txtfilter = new FileNameExtensionFilter(
+     "txt files (*.txt)", "txt");
+        fc.setFileFilter(txtfilter);
+        fc.setAcceptAllFileFilterUsed(false);
+        int returnVal = fc.showSaveDialog(this);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            File file = fc.getSelectedFile();
+            path = file.getAbsolutePath();
+            if(!path.contains(".txt"))
+                path = path + ".txt";
+        }
         ExportBuilder builder = new ExportBuilderImpl("txt");
-        builder.exportText(jTextAreaArtigo.getText());
+        builder.exportText(jTextAreaArtigo.getText(),path);
     }//GEN-LAST:event_exportTxtActionPerformed
 
 
