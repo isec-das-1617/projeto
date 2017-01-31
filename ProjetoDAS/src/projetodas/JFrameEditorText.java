@@ -56,6 +56,8 @@ public class JFrameEditorText extends javax.swing.JFrame {
         jMenuEditarCopiar = new javax.swing.JMenuItem();
         jMenuEditarCortar = new javax.swing.JMenuItem();
         jMenuEditarColar = new javax.swing.JMenuItem();
+        Undo = new javax.swing.JMenuItem();
+        Redo = new javax.swing.JMenuItem();
         jMenuFicheiroEditar = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuColar = new javax.swing.JMenuItem();
@@ -148,6 +150,24 @@ public class JFrameEditorText extends javax.swing.JFrame {
             }
         });
         jMenuEditar.add(jMenuEditarColar);
+
+        Undo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.CTRL_MASK));
+        Undo.setText("Undo");
+        Undo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UndoActionPerformed(evt);
+            }
+        });
+        jMenuEditar.add(Undo);
+
+        Redo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Y, java.awt.event.InputEvent.CTRL_MASK));
+        Redo.setText("Redo");
+        Redo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RedoActionPerformed(evt);
+            }
+        });
+        jMenuEditar.add(Redo);
 
         MenuNotePade.add(jMenuEditar);
 
@@ -281,6 +301,14 @@ public class JFrameEditorText extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuFicheiroNovoActionPerformed
 
+    private void UndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UndoActionPerformed
+        
+    }//GEN-LAST:event_UndoActionPerformed
+
+    private void RedoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RedoActionPerformed
+        
+    }//GEN-LAST:event_RedoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -319,6 +347,8 @@ public class JFrameEditorText extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar MenuNotePade;
+    private javax.swing.JMenuItem Redo;
+    private javax.swing.JMenuItem Undo;
     private javax.swing.JMenuItem jMenuColar;
     private javax.swing.JMenu jMenuEditar;
     private javax.swing.JMenuItem jMenuEditarColar;
