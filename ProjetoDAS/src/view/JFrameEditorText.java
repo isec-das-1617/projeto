@@ -29,6 +29,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class JFrameEditorText extends javax.swing.JFrame {
 
+    File fileOpen = null;
     /**
      * Creates new form NewJFrameEugenio
      */
@@ -234,10 +235,11 @@ public class JFrameEditorText extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuFicheiroAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuFicheiroAbrirActionPerformed
-        // TODO add your handling code here:
         JFileChooser fc = new JFileChooser();
-        //fc.addChoosableFileFilter( new ImageFilter() );
-
+        FileNameExtensionFilter txtfilter = new FileNameExtensionFilter(
+                "html files (*.txt)", "txt");
+        fc.setAcceptAllFileFilterUsed(false);
+        fc.setFileFilter(txtfilter);
         fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
         int returnVal = fc.showOpenDialog(this);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
@@ -246,10 +248,12 @@ public class JFrameEditorText extends javax.swing.JFrame {
                 BufferedReader inputStream = new BufferedReader(new FileReader(file.getPath()));
                 String inputLine;
                 jTextAreaArtigo.setText("");
-                setTitle("Ref Manager-" + file.getName());
                 while ((inputLine = inputStream.readLine()) != null) {
                     jTextAreaArtigo.append(inputLine + "\n");
                 }
+                //Guardar o ficheiro aberto
+                fileOpen = file;
+                setTitle("Ref Manager - " + file.getName());
             } catch (FileNotFoundException ioe) {
                 JOptionPane.showMessageDialog(null, "Ficheiro não encontrado.", "", JOptionPane.WARNING_MESSAGE);
             } catch (IOException ioe) {
