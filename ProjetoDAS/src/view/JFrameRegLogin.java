@@ -86,7 +86,7 @@ public class JFrameRegLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        User u = new User(jTextField1.getText());
+        String u = jTextField1.getText();
         
         if (fc.getUc().addUser(u)){
              jLabel1.setText("New");

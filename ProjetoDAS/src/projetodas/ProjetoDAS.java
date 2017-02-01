@@ -5,7 +5,10 @@ import controller.FacadeController;
 import controller.UserController;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.event.ActionEvent;
@@ -30,9 +33,8 @@ public class ProjetoDAS extends JApplet {
     private User user;
     public static JFrame janela;
 
-    public static void main(String[] args) {
-       
-        ucontrol = new UserController();
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+      
         
         SwingUtilities.invokeLater(new Runnable() {
             
@@ -43,10 +45,19 @@ public class ProjetoDAS extends JApplet {
                 } catch (Exception e) {
                 
                 }
-                FacadeController fc = new FacadeController();
-                JFrame janela = null;
-                janela = new JFrameRegLogin(fc);
-                janela.setVisible(true);
+                FacadeController fc;
+                try {
+                    fc = new FacadeController();
+                    JFrame janela = null;
+                    janela = new JFrameRegLogin(fc);
+                    janela.setVisible(true);
+                    
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(ProjetoDAS.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(ProjetoDAS.class.getName()).log(Level.SEVERE, null, ex);
+                }
+               
 //                janela = new JFrameEditorText();
 //                janela.setVisible(true);
             }

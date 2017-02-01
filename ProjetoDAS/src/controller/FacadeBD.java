@@ -11,16 +11,15 @@ import java.sql.SQLException;
  *
  * @author diogo
  */
-public class FacadeController {
-    private final UserController uc;
+public class FacadeBD {
 
-    public FacadeController() throws ClassNotFoundException, SQLException {
-        this.uc = new UserController();
+    private static CRUDUser users;
+
+    public FacadeBD() throws ClassNotFoundException, SQLException {
+        this.users = new CRUDUser();
     }
 
-    public UserController getUc() {
-        return uc;
+    public static CRUDUser getUsers() {
+        return users;
     }
-    
-    
 }
