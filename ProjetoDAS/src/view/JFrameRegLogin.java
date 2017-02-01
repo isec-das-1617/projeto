@@ -28,6 +28,7 @@ public class JFrameRegLogin extends javax.swing.JFrame {
         this.fc=fc;
        
         initComponents();
+        setLocationRelativeTo(null);
          this.jLabel1.setVisible(false);
     }
 

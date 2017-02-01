@@ -21,8 +21,14 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 import export.ExportBuilder;
 import export.ExportBuilderImpl;
+import javax.swing.JFrame;
 import javax.swing.filechooser.FileNameExtensionFilter;
+<<<<<<< Updated upstream
 import javax.swing.undo.UndoManager;
+=======
+import references.AddReference;
+import references.ManageReference;
+>>>>>>> Stashed changes
 
 /**
  *
@@ -38,9 +44,9 @@ public class JFrameEditorText extends javax.swing.JFrame {
     public JFrameEditorText(FacadeController fc) {
         initComponents();
         String username = fc.getUc().getCurrentUser().getUsername();
-        setTitle("Ref Manager 0.01 ");
-        jTextAreaArtigo.setText("Welcome " + username);
+        setTitle("Ref Manager 0.01 - Welcome " + username);        
         //setSize(new Dimension(500, 500));
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
@@ -71,6 +77,12 @@ public class JFrameEditorText extends javax.swing.JFrame {
         jMenuEditarColar = new javax.swing.JMenuItem();
         Undo = new javax.swing.JMenuItem();
         Redo = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuAddReference = new javax.swing.JMenuItem();
+        jSeparator3 = new javax.swing.JPopupMenu.Separator();
+        jMenuInsertReference = new javax.swing.JMenuItem();
+        jSeparator4 = new javax.swing.JPopupMenu.Separator();
+        jMenuManageReference = new javax.swing.JMenuItem();
         jMenuFicheiroEditar = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuColar = new javax.swing.JMenuItem();
@@ -200,6 +212,31 @@ public class JFrameEditorText extends javax.swing.JFrame {
 
         MenuNotePade.add(jMenuEditar);
 
+        jMenu1.setText("Reference");
+
+        jMenuAddReference.setText("Add new");
+        jMenuAddReference.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuAddReferenceActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuAddReference);
+        jMenu1.add(jSeparator3);
+
+        jMenuInsertReference.setText("Insert at cursor");
+        jMenu1.add(jMenuInsertReference);
+        jMenu1.add(jSeparator4);
+
+        jMenuManageReference.setText("Manage");
+        jMenuManageReference.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuManageReferenceActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuManageReference);
+
+        MenuNotePade.add(jMenu1);
+
         jMenuFicheiroEditar.setText("Menu");
 
         jMenuItem3.setText("jMenuItem3");
@@ -230,7 +267,7 @@ public class JFrameEditorText extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTextAreaArtigo, javax.swing.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
+            .addComponent(jTextAreaArtigo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
         );
 
         pack();
@@ -400,6 +437,18 @@ public class JFrameEditorText extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_exportTxtActionPerformed
 
+    private void jMenuAddReferenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAddReferenceActionPerformed
+        JFrame addRef = new AddReference();
+        addRef.setLocationRelativeTo(null);
+        addRef.setVisible(true);
+    }//GEN-LAST:event_jMenuAddReferenceActionPerformed
+
+    private void jMenuManageReferenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuManageReferenceActionPerformed
+       JFrame man = new ManageReference();
+        man.setLocationRelativeTo(null);
+        man.setVisible(true);
+    }//GEN-LAST:event_jMenuManageReferenceActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar MenuNotePade;
@@ -407,6 +456,8 @@ public class JFrameEditorText extends javax.swing.JFrame {
     private javax.swing.JMenuItem Undo;
     private javax.swing.JMenuItem exportHtml;
     private javax.swing.JMenuItem exportTxt;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuItem jMenuAddReference;
     private javax.swing.JMenuItem jMenuColar;
     private javax.swing.JMenu jMenuEditar;
     private javax.swing.JMenuItem jMenuEditarColar;
@@ -419,9 +470,13 @@ public class JFrameEditorText extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuFicheiroGuardarComo;
     private javax.swing.JMenuItem jMenuFicheiroNovo;
     private javax.swing.JMenuItem jMenuFicheiroSair;
+    private javax.swing.JMenuItem jMenuInsertReference;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuManageReference;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JPopupMenu.Separator jSeparator3;
+    private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JTextArea jTextAreaArtigo;
     // End of variables declaration//GEN-END:variables
 }
