@@ -23,12 +23,12 @@ import export.ExportBuilder;
 import export.ExportBuilderImpl;
 import javax.swing.JFrame;
 import javax.swing.filechooser.FileNameExtensionFilter;
-<<<<<<< Updated upstream
+
 import javax.swing.undo.UndoManager;
-=======
+
 import references.AddReference;
 import references.ManageReference;
->>>>>>> Stashed changes
+
 
 /**
  *
