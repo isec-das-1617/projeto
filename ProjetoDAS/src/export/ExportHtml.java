@@ -27,8 +27,12 @@ public class ExportHtml extends Export{
         try {
             fWriter = new FileWriter(path);
             writer = new BufferedWriter(fWriter);
-            writer.write(text);
-            writer.newLine();
+            String[] linhas = text.split("\n");
+            for(int i=0;i<linhas.length;i++){
+                writer.write("<p>" + text + "<\\p>");
+                writer.newLine();
+            }
+            
             writer.close();
         } catch (Exception e) {
             //catch any exceptions here

@@ -25,7 +25,9 @@ public class ExportTxt extends Export{
         
         try{
             PrintWriter writer = new PrintWriter(path, "UTF-8");
-            writer.println(text);
+            String[] linhas = text.split("\n");
+            for(int i=0;i<linhas.length;i++)
+                writer.println(linhas[i]);
             writer.close();
         } catch (IOException e) {
             return;
