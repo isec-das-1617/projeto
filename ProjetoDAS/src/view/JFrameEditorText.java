@@ -31,6 +31,7 @@ import javax.swing.undo.UndoManager;
 public class JFrameEditorText extends javax.swing.JFrame {
 
     File fileOpen = null;
+
     /**
      * Creates new form NewJFrameEugenio
      */
@@ -285,36 +286,55 @@ public class JFrameEditorText extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuEditarCortarActionPerformed
 
     private void jMenuFicheiroGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuFicheiroGuardarActionPerformed
-        try {
-            JFileChooser fc = new JFileChooser();
-            File file = fc.getSelectedFile();
-            FileWriter outputStream = new FileWriter(file.getPath());
-            outputStream.write(jTextAreaArtigo.getText());
-            outputStream.close();
-            setTitle("Ref Manager--" + file.getName());
-        } catch (IOException ioe) {
-            System.out.println("IOException");
-        }
+
+        saveOnFile((fileOpen == null ? getSaveFile() : fileOpen));
     }//GEN-LAST:event_jMenuFicheiroGuardarActionPerformed
 
     private void jMenuColarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuColarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuColarActionPerformed
-
-    private void jMenuFicheiroGuardarComoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuFicheiroGuardarComoActionPerformed
-        JFileChooser fc = new JFileChooser();
-        int returnVal = fc.showSaveDialog(this);
-        if (returnVal == JFileChooser.APPROVE_OPTION) {
-            try {
-                File file = fc.getSelectedFile();
-                try (FileWriter outputStream = new FileWriter(file.getPath() + ".txt")) {
+    private void saveOnFile(File file) {
+        try {
+            if (file != null) {
+                String filePath = "";
+                if (!file.getName().endsWith(".txt")) {
+                    filePath = file.getPath() + ".txt";
+                } else {
+                    filePath = file.getPath();
+                }
+                try (FileWriter outputStream = new FileWriter(filePath)) {
                     setTitle("Ref Manager--" + file.getName());
                     outputStream.write(jTextAreaArtigo.getText());
                 }
-            } catch (IOException ioe) {
-                System.out.println("IOException");
+                fileOpen = file;
             }
+        } catch (FileNotFoundException ioe) {
+            JOptionPane.showMessageDialog(null, "Ficheiro não encontrado.", "", JOptionPane.WARNING_MESSAGE);
+        } catch (IOException ioe) {
+            System.out.println("IOException");
         }
+
+    }
+
+    private File getSaveFile() {
+
+        File file = null;
+        JFileChooser fc = new JFileChooser();
+        FileNameExtensionFilter txtfilter = new FileNameExtensionFilter(
+                "html files (*.txt)", "txt");
+        fc.setAcceptAllFileFilterUsed(false);
+        fc.setFileFilter(txtfilter);
+        fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        int returnVal = fc.showSaveDialog(this);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            file = fc.getSelectedFile();
+        }
+        return file;
+    }
+
+    private void jMenuFicheiroGuardarComoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuFicheiroGuardarComoActionPerformed
+
+        saveOnFile(getSaveFile());
     }//GEN-LAST:event_jMenuFicheiroGuardarComoActionPerformed
 
     private void jMenuFicheiroSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuFicheiroSairActionPerformed
