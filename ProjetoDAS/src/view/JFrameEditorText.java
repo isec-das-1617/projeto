@@ -419,6 +419,7 @@ public class JFrameEditorText extends javax.swing.JFrame {
 
     private void exportTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportTxtActionPerformed
         String path = null;
+        
         JFileChooser fc = new JFileChooser();
         fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
         FileNameExtensionFilter txtfilter = new FileNameExtensionFilter(
