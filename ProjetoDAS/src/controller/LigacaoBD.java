@@ -32,7 +32,12 @@ public class LigacaoBD {
                 statement.executeUpdate("drop table if exists users");
             }
             
+//    private String autores;
+//    private String titulo;
+//    private String editora;
+//    private int ano;
             statement.executeUpdate("create table users (id integer, name string)");
+            statement.executeUpdate("create table referencias (id integer, string autores, string titulo, string editora,integer ano)");
            // statement.executeUpdate("insert into person values(1, 'leo')");
            // statement.executeUpdate("insert into person values(2, 'yui')");
             
