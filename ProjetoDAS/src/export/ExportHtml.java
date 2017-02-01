@@ -23,6 +23,8 @@ public class ExportHtml extends Export{
         }
         
         String title = "Title";
+        String[] div = path.split("\\\\");
+        title = div[div.length - 1].replace(".html", "");
         
         FileWriter fWriter = null;
         BufferedWriter writer = null;
