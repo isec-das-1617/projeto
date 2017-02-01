@@ -5,6 +5,7 @@
  */
 package view;
 
+import controller.FacadeController;
 import controller.UserController;
 import java.awt.Dimension;
 import java.awt.image.ImageFilter;
@@ -31,9 +32,9 @@ public class JFrameEditorText extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrameEugenio
      */
-    public JFrameEditorText(UserController uc) {
+    public JFrameEditorText(FacadeController fc) {
         initComponents();
-        String username = uc.getCurrentUser().getUsername();
+        String username = fc.getUc().getCurrentUser().getUsername();
         setTitle("Ref Manager 0.01 ");
         jTextAreaArtigo.setText("Welcome " + username);
         //setSize(new Dimension(500, 500));

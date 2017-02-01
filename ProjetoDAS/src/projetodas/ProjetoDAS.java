@@ -1,6 +1,7 @@
 
 package projetodas;
 
+import controller.FacadeController;
 import controller.UserController;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -42,9 +43,9 @@ public class ProjetoDAS extends JApplet {
                 } catch (Exception e) {
                 
                 }
-                UserController uc = new UserController();
+                FacadeController fc = new FacadeController();
                 JFrame janela = null;
-                janela = new JFrameRegLogin(uc);
+                janela = new JFrameRegLogin(fc);
                 janela.setVisible(true);
 //                janela = new JFrameEditorText();
 //                janela.setVisible(true);

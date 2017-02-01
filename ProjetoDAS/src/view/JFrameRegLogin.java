@@ -5,6 +5,7 @@
  */
 package view;
 
+import controller.FacadeController;
 import controller.UserController;
 import javax.swing.JFrame;
 import model.User;
@@ -16,17 +17,15 @@ import projetodas.ProjetoDAS;
  */
 public class JFrameRegLogin extends javax.swing.JFrame {
 
-    public void setUcontrol(UserController ucontrol) {
-        this.ucontrol = ucontrol;
-    }
 
-    private UserController ucontrol;
+    private FacadeController fc;
+    
     /**
      * Creates new form Registo
      * @param uc
      */
-    public JFrameRegLogin(UserController uc) {
-        this.ucontrol=uc;
+    public JFrameRegLogin(FacadeController fc) {
+        this.fc=fc;
        
         initComponents();
          this.jLabel1.setVisible(false);
@@ -89,15 +88,15 @@ public class JFrameRegLogin extends javax.swing.JFrame {
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         User u = new User(jTextField1.getText());
         
-        if (ucontrol.addUser(u)){
+        if (fc.getUc().addUser(u)){
              jLabel1.setText("New");
         } else {
             jLabel1.setText("Exist");
         }
-        this.ucontrol.setCurrentUser(u);
+        this.fc.getUc().setCurrentUser(u);
         jLabel1.setVisible(true); 
         this.setVisible(false);
-        JFrame janela = new JFrameEditorText(this.ucontrol);
+        JFrame janela = new JFrameEditorText(this.fc);
         janela.setVisible(true);
   
     }//GEN-LAST:event_jToggleButton1ActionPerformed
