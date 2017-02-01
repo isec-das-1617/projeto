@@ -22,17 +22,26 @@ public class ExportHtml extends Export{
             }
         }
         
+        String title = "Title";
+        
         FileWriter fWriter = null;
         BufferedWriter writer = null;
         try {
             fWriter = new FileWriter(path);
             writer = new BufferedWriter(fWriter);
+            writer.write("<!DOCTYPE html>");writer.newLine();
+            writer.write("<html>");writer.newLine();
+            writer.write("<head>");writer.newLine();
+            writer.write("<title>" + title + "</title>");writer.newLine();
+            writer.write("</head>");writer.newLine();
+            writer.write("<body>");writer.newLine();
             String[] linhas = text.split("\n");
             for(int i=0;i<linhas.length;i++){
-                writer.write("<p>" + text + "<\\p>");
+                writer.write("<p>" + linhas[i] + "</p>");
                 writer.newLine();
             }
-            
+            writer.write("</body>");writer.newLine();
+            writer.write("</html>");
             writer.close();
         } catch (Exception e) {
             //catch any exceptions here
