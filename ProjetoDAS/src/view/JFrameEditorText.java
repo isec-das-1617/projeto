@@ -22,6 +22,7 @@ import javax.swing.filechooser.FileFilter;
 import export.ExportBuilder;
 import export.ExportBuilderImpl;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.undo.UndoManager;
 
 /**
  *
@@ -30,11 +31,13 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class JFrameEditorText extends javax.swing.JFrame {
 
     File fileOpen = null;
+    UndoManager ud = new UndoManager();
     /**
      * Creates new form NewJFrameEugenio
      */
     public JFrameEditorText(FacadeController fc) {
         initComponents();
+        jTextAreaArtigo.getDocument().addUndoableEditListener(ud);
         String username = fc.getUc().getCurrentUser().getUsername();
         setTitle("Ref Manager 0.01 ");
         jTextAreaArtigo.setText("Welcome " + username);
@@ -332,11 +335,15 @@ public class JFrameEditorText extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuFicheiroNovoActionPerformed
 
     private void UndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UndoActionPerformed
-
+        if(ud.canUndo()){
+            ud.undo();
+        }
     }//GEN-LAST:event_UndoActionPerformed
 
     private void RedoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RedoActionPerformed
-
+        if(ud.canRedo()){
+            ud.redo();
+        }
     }//GEN-LAST:event_RedoActionPerformed
 
     private void exportHtmlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportHtmlActionPerformed
