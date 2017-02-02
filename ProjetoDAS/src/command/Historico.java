@@ -37,7 +37,6 @@ public class Historico {
         if(index > 0){
             hist.add(alt);
             index--;
-            System.out.println(index);
             return hist.get(index);
         }
         return null;

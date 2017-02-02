@@ -60,7 +60,7 @@ public class JFrameEditorText extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextAreaArtigo = new javax.swing.JTextArea();
+        jTextAreaArtigo = new TextArea();
         MenuNotePade = new javax.swing.JMenuBar();
         jMenuFicheiro = new javax.swing.JMenu();
         jMenuFicheiroNovo = new javax.swing.JMenuItem();

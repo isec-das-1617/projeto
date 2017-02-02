@@ -244,6 +244,10 @@
         <Property name="columns" type="int" value="20"/>
         <Property name="rows" type="int" value="5"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new TextArea()"/>
+        <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="JFrameEditorText_jTextAreaArtigo"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
