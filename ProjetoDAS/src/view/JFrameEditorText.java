@@ -5,6 +5,7 @@
  */
 package view;
 
+import command.Colar;
 import controller.FacadeController;
 import controller.UserController;
 import java.awt.Dimension;
@@ -25,6 +26,7 @@ import javax.swing.JFrame;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import javax.swing.undo.UndoManager;
+import command.*;
 
 import references.AddReference;
 import references.ManageReference;
@@ -38,9 +40,8 @@ public class JFrameEditorText extends javax.swing.JFrame {
 
     File fileOpen = null;
 
-    /**
-     * Creates new form NewJFrameEugenio
-     */
+    
+    
     public JFrameEditorText(FacadeController fc) {
         initComponents();
         String username = fc.getUc().getCurrentUser().getUsername();
@@ -311,15 +312,18 @@ public class JFrameEditorText extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuEditarCopiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEditarCopiarActionPerformed
-        jTextAreaArtigo.copy();
+        final Command cm = new Copiar(jTextAreaArtigo.getSelectedText());
+        cm.execute();
     }//GEN-LAST:event_jMenuEditarCopiarActionPerformed
 
     private void jMenuEditarColarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEditarColarActionPerformed
-        jTextAreaArtigo.paste();
+        final Command cm = new Colar(jTextAreaArtigo);
+        cm.execute();
     }//GEN-LAST:event_jMenuEditarColarActionPerformed
 
     private void jMenuEditarCortarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEditarCortarActionPerformed
-        jTextAreaArtigo.cut();
+        final Command cm = new Cortar(jTextAreaArtigo);
+        cm.execute();
     }//GEN-LAST:event_jMenuEditarCortarActionPerformed
 
     private void jMenuFicheiroGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuFicheiroGuardarActionPerformed
@@ -390,11 +394,13 @@ public class JFrameEditorText extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuFicheiroNovoActionPerformed
 
     private void UndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UndoActionPerformed
-        
+        final Command cm = new Undo(jTextAreaArtigo);
+        cm.execute();
     }//GEN-LAST:event_UndoActionPerformed
 
     private void RedoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RedoActionPerformed
-        
+        final Command cm = new Redo(jTextAreaArtigo);
+        cm.execute();
     }//GEN-LAST:event_RedoActionPerformed
 
     private void exportHtmlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportHtmlActionPerformed
