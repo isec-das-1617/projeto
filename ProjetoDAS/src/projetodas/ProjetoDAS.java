@@ -1,12 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package projetodas;
 
+import controller.FacadeController;
+import controller.UserController;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.event.ActionEvent;
@@ -18,32 +20,46 @@ import javax.swing.JApplet;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
+import model.User;
+import view.JFrameRegLogin;
 
-/**
- *
- * @author diogo
- */
 public class ProjetoDAS extends JApplet {
     
     private static final int JFXPANEL_WIDTH_INT = 300;
     private static final int JFXPANEL_HEIGHT_INT = 250;
     private static JFXPanel fxContainer;
+   
+    private static UserController ucontrol;
+    private User user;
+    public static JFrame janela;
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+      
+        
         SwingUtilities.invokeLater(new Runnable() {
             
             @Override
             public void run() {
                 try {
-                    UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+                    UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
                 } catch (Exception e) {
+                
                 }
-                JFrame janela = new notepad();
-                janela.setVisible(true);
-
+                FacadeController fc;
+                try {
+                    fc = new FacadeController();
+                    JFrame janela = null;
+                    janela = new JFrameRegLogin(fc);
+                    janela.setVisible(true);
+                    
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(ProjetoDAS.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(ProjetoDAS.class.getName()).log(Level.SEVERE, null, ex);
+                }
+               
+//                janela = new JFrameEditorText();
+//                janela.setVisible(true);
             }
         });
     }
