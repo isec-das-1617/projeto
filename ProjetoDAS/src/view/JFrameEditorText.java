@@ -27,6 +27,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 import javax.swing.undo.UndoManager;
 import command.*;
+import java.awt.event.KeyEvent;
 
 import references.AddReference;
 import references.ManageReference;
@@ -92,6 +93,11 @@ public class JFrameEditorText extends javax.swing.JFrame {
 
         jTextAreaArtigo.setColumns(20);
         jTextAreaArtigo.setRows(5);
+        jTextAreaArtigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextAreaArtigoKeyPressed(evt);
+            }
+        });
 
         jMenuFicheiro.setText("File");
 
@@ -275,6 +281,7 @@ public class JFrameEditorText extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuFicheiroAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuFicheiroAbrirActionPerformed
+        Historico.getInstance().cleanHist();
         JFileChooser fc = new JFileChooser();
         FileNameExtensionFilter txtfilter = new FileNameExtensionFilter(
                 "html files (*.txt)", "txt");
@@ -387,6 +394,7 @@ public class JFrameEditorText extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuFicheiroSairActionPerformed
 
     private void jMenuFicheiroNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuFicheiroNovoActionPerformed
+        Historico.getInstance().cleanHist();
         int nuask = JOptionPane.showConfirmDialog(this, "Tem acerteza que quer iniciar um novo documento?");
         if (nuask == JOptionPane.YES_OPTION) {
             jTextAreaArtigo.setText("");
@@ -455,6 +463,14 @@ public class JFrameEditorText extends javax.swing.JFrame {
         man.setLocationRelativeTo(null);
         man.setVisible(true);
     }//GEN-LAST:event_jMenuManageReferenceActionPerformed
+
+    private void jTextAreaArtigoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextAreaArtigoKeyPressed
+        char c = evt.getKeyChar();
+        if(Character.isLetterOrDigit(c) || c==KeyEvent.VK_SPACE || c == KeyEvent.VK_BACK_SPACE){
+            final Command cm = new Write(jTextAreaArtigo);
+            cm.execute();
+        }
+    }//GEN-LAST:event_jTextAreaArtigoKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

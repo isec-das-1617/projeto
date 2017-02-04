@@ -43,11 +43,15 @@ public class Historico {
     }
     
     public String redoHist() {
-        //System.out.println(index + "," + hist.size());
         if(index < hist.size()-1){
             index++;
             return hist.get(index);
         }
         return null;
+    }
+    
+    public void cleanHist() {
+        index=0;
+        hist.clear();
     }
 }
